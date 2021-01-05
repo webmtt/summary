@@ -286,7 +286,46 @@
                     总之，for...in循环主要是为遍历对象而设计的，不适用于遍历数组
       for...of循环：1.有着同for...in一样的简洁语法，但是没有for...in那些缺点。
                    2.不同于forEach方法，它可以与break、continue和return配合使用。
-	           3.提供了遍历所有数据结构的统一操作接口。
+	           3.提供了遍历所有数据结构的统一操作接口
+  
+16.Generator 函数的语法
+
+  1.简介
+      （1）Generator 函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同。语法上，首先可以把它理解成，Generator 函数是一个状态机，封装了多个内部状态。执行 Generator 函数会返回一个遍历器对象。形式上，Generator 函数是一个普通函数，但是有两个特征。一是，function关键字与函数名之间有一个星号；二是，函数体内部使用yield表达式，定义不同的内部状态（yield在英语里的意思就是“产出”）。调用 Generator 函数后，该函数并不执行，返回的也不是函数运行结果，而是一个指向内部状态的指针对象。Generator 函数是分段执行的，yield表达式是暂停执行的标记，而next方法可以恢复执行。
+        （2）yield 表达式
+        由于 Generator 函数返回的遍历器对象，只有调用next方法才会遍历下一个内部状态，所以其实提供了一种可以暂停执行的函数。yield表达式就是暂停标志。
+        （3）与 Iterator 接口的关系
+	   任意一个对象的Symbol.iterator方法，等于该对象的遍历器生成函数，调用该函数会返回该对象的一个遍历器对象。由于 Generator 函数就是遍历器生成函数，因此可以把 Generator 赋值给对象的Symbol.iterator属性，从而使得该对象具有 Iterator 接口。
+  2.next 方法的参数
+      yield表达式本身没有返回值，或者说总是返回undefined。next方法可以带一个参数，该参数就会被当作上一个yield表达式的返回值。
+  3.for...of 循环
+      for...of循环可以自动遍历 Generator 函数运行时生成的Iterator对象，且此时不再需要调用next方法。
+  4.Generator.prototype.throw()
+      Generator 函数返回的遍历器对象，都有一个throw方法，可以在函数体外抛出错误，然后在 Generator 函数体内捕获。
+  5.Generator.prototype.return()
+      Generator 函数返回的遍历器对象，还有一个return()方法，可以返回给定的值，并且终结遍历 Generator 函数。
+  6.next()、throw()、return() 的共同点
+      next()、throw()、return()这三个方法本质上是同一件事，可以放在一起理解。它们的作用都是让 Generator 函数恢复执行，并且使用不同的语句替换yield表达式。
+    next()是将yield表达式替换成一个值。
+    throw()是将yield表达式替换成一个throw语句。
+    return()是将yield表达式替换成一个return语句。
+  7.yield* 表达式
+      如果在 Generator 函数内部，调用另一个 Generator 函数。需要在前者的函数体内部，自己手动完成遍历。yield*表达式，作为解决办法，用来在一个 Generator 函数里面执行另一个 Generator 函数。
+  8.作为对象属性的 Generator 函数
+    如果一个对象的属性是 Generator 函数，可以简写成属性前面有一个星号，表示这个属性是一个 Generator 函数。
+  9.Generator 函数的this
+    Generator 函数总是返回一个遍历器，ES6 规定这个遍历器是 Generator 函数的实例，也继承了 Generator 函数的prototype对象上的方法。但是，如果把Generator 函数当作普通的构造函数，并不会生效，因为Generator 函数返回的总是遍历器对象，而不是this对象。
+    解决：首先，生成一个空对象，使用call方法绑定 Generator 函数内部的this。这样，构造函数调用以后，这个空对象就是 Generator 函数的实例对象了。执行遍历器对象f，生成的对象实例是obj，如果要将这两个对象统一，可以将obj换成F.prototype
+  10.含义
+       Generator 与状态机
+       Generator 与协程（（1）协程与子例程的差异；（2）协程与普通线程的差异）
+       Generator 与上下文
+  11.应用
+     （1）异步操作的同步化表达
+     （2）控制流管理
+     （3）部署 Iterator 接口
+     （4）作为数据结构
+
 
 
 
