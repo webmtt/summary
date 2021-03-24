@@ -392,8 +392,61 @@
 		end事件：整个“数据流”处理完了。
 		error事件：发生错误。
           使用Promise.race()函数，可以判断这三个事件之中哪一个最先发生，只有当data事件最先发生时，才进入下一个数据块的处理。从而，我们可以通过一个while循环，完成所有数据的读取。
+18.async 函数
+  1.含义
+      async 函数就是 Generator 函数的语法糖。
+      改进点：（1）内置执行器；（2）更好的语义；（3）更广的适用性；（4）返回值是 Promise；
+      async函数完全可以看作多个异步操作，包装成的一个 Promise 对象，而await命令就是内部then命令的语法糖
+  2.基本用法
+      async函数返回一个 Promise 对象，可以使用then方法添加回调函数。当函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句。
+      async使用形式：（1）函数声明；（2）函数表达式；（3）对象的方法；（4）Class的方法；（5）箭头函数；
+  3.语法
+      1.返回Promise对象
+      async函数返回一个 Promise 对象。async函数内部return语句返回的值，会成为then方法回调函数的参数。async函数内部抛出错误，会导致返回的 Promise 对象变为reject状态。抛出的错误对象会被catch方法回调函数接收到。
+      2.Promise 对象的状态变化
+      async函数返回的 Promise 对象，必须等到内部所有await命令后面的 Promise 对象执行完，才会发生状态改变，除非遇到return语句或者抛出错误。也就是说，只有async函数内部的异步操作执行完，才会执行then方法指定的回调函数。
+      3.await 命令
+      正常情况下，await命令后面是一个 Promise 对象，返回该对象的结果。如果不是 Promise 对象，就直接返回对应的值。
+      await命令后面的 Promise 对象如果变为reject状态，则reject的参数会被catch方法的回调函数接收到。任何一个await语句后面的 Promise 对象变为reject状态，那么整个async函数都会中断执行。
+     如何即使前一个异步操作失败，也不要中断后面的异步操作？（1）将第一个await放在try...catch结构里面，这样不管这个异步操作是否成功，第二个await都会执行；（2）await后面的 Promise 对象再跟一个catch方法，处理前面可能出现的错误。
+      4.错误处理
+      如果await后面的异步操作出错，那么等同于async函数返回的 Promise 对象被reject。防止出错的方法，可将其放在try...catch代码块之中。
+      5.使用注意点
+      （1）await命令后面的Promise对象，运行结果可能是rejected，所以最好把await命令放在try...catch代码块中；
+      （2）多个await命令后面的异步操作，如果不存在继发关系，最好让它们同时触发；
+      （3）await命令只能用在async函数之中，如果用在普通函数，就会报错；
+      （4）async 函数可以保留运行堆栈
+   4.async函数的实现原理
+      async 函数的实现原理，就是将 Generator 函数和自动执行器，包装在一个函数里。
+  5.与其他异步处理方法的比较
+         Promise：比回调函数的写法大大改进，但是一眼看上去，代码完全都是 Promise 的 API（then、catch等等），操作本身的语义反而不容易看出来
+  Generator 函数：语义比 Promise 写法更清晰，用户定义的操作全部都出现在任务执行器函数的内部。这个写法的问题在于，必须有一个任务自动运行器；而且必须保证yield语句后面的表达式，必须返回一个 Promise
+       async 函数：实现最简洁，最符合语义，几乎没有语义不相关的代码。它将 Generator 写法中的自动执行器，改在语言层面提供，不暴露给用户，因此代码量最少。如果使用 Generator 写法，自动执行器需要用户自己提供
+  6.实例：按顺序完成异步操作
+      依次远程读取一组 URL，然后按照读取的顺序输出结果
+      async function logInOrder(urls) {
+        for (const url of urls) {
+        const response = await fetch(url);
+        console.log(await response.text());
+        }
+      }
+      并发发出远程请求，且按顺序输出
+      async function logInOrder(urls) {
+        // 并发读取远程URL
+         const textPromises = urls.map(async url => {
+         const response = await fetch(url);
+        return response.text();
+      });
 
-
+      // 按次序输出
+      for (const textPromise of textPromises) {
+         console.log(await textPromise);
+      }
+     }  
+  7.顶层 await
+      目前，有一个语法提案，允许在模块的顶层独立使用await命令，使得await命令独立使用，没有放在 async 函数里面不会报错了。这个提案的目的，是借用await解决模块异步加载的问题。
+      等于要求模块的使用者遵守一个额外的使用协议，按照特殊的方法使用这个模块。一旦你忘了要用 Promise 加载，只使用正常的加载方法，依赖这个模块的代码就可能出错。而且，如果上面的usage.js又有对外的输出，等于这个依赖链的所有模块都要使用 Promise 加载。顶层的await命令，就是为了解决这个问题。它保证只有异步操作完成，模块才会输出值。模块的使用者完全不用关心，依赖模块的内部有没有异步操作，正常加载即可。这时，模块的加载会等待依赖模块（上例是awaiting.js）的异步操作完成，才执行后面的代码，有点像暂停在那里。所以，它总是会得到正确的output，不会因为加载时机的不同，而得到不一样的值。注意，顶层await只能用在 ES6 模块，不能用在 CommonJS 模块。这是因为 CommonJS 模块的require()是同步加载，如果有顶层await，就没法处理加载了。
+      使用场景：import（）方法加载；数据库操作；依赖回滚；
 
 
 
