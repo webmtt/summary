@@ -14,6 +14,8 @@
 
 **ECMAScript 6**
 
+
+
 ### let 和 const
 
 - let 和 var 的差异
@@ -40,12 +42,15 @@
     
       
     
-      <img src="images/es6/let 与 const 1.png" alt="let 与 const 1" style="zoom: 67%;" />
+      <img src="images/es6/let 与 const 1.png" alt="let 与 const 1" style="zoom: 50%;" />
     
-      <img src="images/es6/let 与 const 2.png" alt="let 与 const 2" style="zoom: 67%;" />
+      <img src="images/es6/let 与 const 2.png" alt="let 与 const 2" style="zoom:50%;" />
     
-      <img src="images/es6/let 与 const 3.png" alt="let 与 const 3" style="zoom: 67%;" />
+      <img src="images/es6/let 与 const 3.png" alt="let 与 const 3" style="zoom:50%;" />
     
+
+
+
 ###     解构赋值
 
 - 对象的解构赋值
@@ -57,9 +62,11 @@
 - 手册地址：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
         
   
-  <img src="images/es6/解构赋值 1.png" alt="解构赋值 1" style="zoom:67%;" />
+  <img src="images/es6/解构赋值 1.png" alt="解构赋值 1" style="zoom:50%;" />
   
-  <img src="images/es6/解构赋值(自定义名称) 2.png" alt="解构赋值(自定义名称) 2" style="zoom:67%;" />
+  <img src="images/es6/解构赋值(自定义名称) 2.png" alt="解构赋值(自定义名称) 2" style="zoom:50%;" />
+
+
 
 ### 展开运算符
 
@@ -69,9 +76,11 @@
 
 - 手册地址：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 
-<img src="images/es6/展开运算符 1.png" alt="展开运算符 1" style="zoom:67%;" />
+<img src="images/es6/展开运算符 1.png" alt="展开运算符 1" style="zoom:50%;" />
 
-<img src="images/es6/展开运算符(不定参) 2.png" alt="展开运算符(不定参) 2" style="zoom:67%;" />
+<img src="images/es6/展开运算符(不定参) 2.png" alt="展开运算符(不定参) 2" style="zoom:50%;" />
+
+
 
 ### Set 对象
 
@@ -84,7 +93,9 @@
     
 - 手册地址：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set
 
-<img src="images/es6/Set 对象 1.png" alt="Set 对象 1" style="zoom:67%;" />
+<img src="images/es6/Set 对象 1.png" alt="Set 对象 1" style="zoom:50%;" />
+
+
 
 ### Map 对象
 
@@ -98,7 +109,9 @@
 
 - 手册地址：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map
 
-<img src="images/es6/Map 对象 1.png" alt="Map 对象 1" style="zoom:67%;" />
+<img src="images/es6/Map 对象 1.png" alt="Map 对象 1" style="zoom:50%;" />
+
+
 
 ### 函数新增扩展
 
@@ -115,13 +128,15 @@
 - rest 参数设置
 - 参数默认值
 
-<img src="images/es6/函数新增扩展(箭头函数) 1.png" alt="函数新增扩展(箭头函数) 1" style="zoom:67%;" />
+<img src="images/es6/函数新增扩展(箭头函数) 1.png" alt="函数新增扩展(箭头函数) 1" style="zoom:50%;" />
 
-<img src="images/es6/函数新增扩展(箭头函数 this) 2.png" alt="函数新增扩展(箭头函数 this) 2" style="zoom:67%;" />
+<img src="images/es6/函数新增扩展(箭头函数 this) 2.png" alt="函数新增扩展(箭头函数 this) 2" style="zoom:50%;" />
 
-<img src="images/es6/函数新增扩展(箭头函数 this) 3.png" alt="函数新增扩展(箭头函数 this) 3" style="zoom:67%;" />
+<img src="images/es6/函数新增扩展(箭头函数 this) 3.png" alt="函数新增扩展(箭头函数 this) 3" style="zoom:50%;" />
 
-<img src="images/es6/函数新增扩展(箭头函数) 4.png" alt="函数新增扩展(箭头函数) 4" style="zoom:67%;" />
+<img src="images/es6/函数新增扩展(箭头函数) 4.png" alt="函数新增扩展(箭头函数) 4" style="zoom:50%;" />
+
+
 
 ### 新增数组扩展
 
@@ -131,13 +146,15 @@
 - flat()、flatMap()
 - 手册地址：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-<img src="images/es6/新增数组扩展 1.png" alt="新增数组扩展 1" style="zoom:67%;" />
+<img src="images/es6/新增数组扩展 1.png" alt="新增数组扩展 1" style="zoom:50%;" />
 
-<img src="images/es6/新增数组扩展 2.png" alt="新增数组扩展 2" style="zoom:67%;" />
+<img src="images/es6/新增数组扩展 2.png" alt="新增数组扩展 2" style="zoom:50%;" />
 
-<img src="images/es6/新增数组扩展 3.png" alt="新增数组扩展 3" style="zoom:67%;" />
+<img src="images/es6/新增数组扩展 3.png" alt="新增数组扩展 3" style="zoom:50%;" />
 
-<img src="images/es6/新增数组扩展 4.png" alt="新增数组扩展 4" style="zoom:67%;" />
+<img src="images/es6/新增数组扩展 4.png" alt="新增数组扩展 4" style="zoom:50%;" />
+
+
 
 ### 新增字符串扩展
 
@@ -147,9 +164,11 @@
 - 模板字符串
 - 手册地址：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String
 
-<img src="images/es6/新增字符串扩展 1.png" alt="新增字符串扩展 1" style="zoom:67%;" />
+<img src="images/es6/新增字符串扩展 1.png" alt="新增字符串扩展 1" style="zoom:50%;" />
 
-<img src="images/es6/新增字符串扩展 2.png" alt="新增字符串扩展 2" style="zoom:67%;" />
+<img src="images/es6/新增字符串扩展 2.png" alt="新增字符串扩展 2" style="zoom:50%;" />
+
+
 
 ### 新增对象扩展
 
@@ -158,7 +177,9 @@
 - 属性名表达式
 - 手册地址：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-<img src="images/es6/新增对象扩展 1.png" alt="新增对象扩展 1" style="zoom:67%;" />
+<img src="images/es6/新增对象扩展 1.png" alt="新增对象扩展 1" style="zoom:50%;" />
+
+
 
 ### babel 使用
 
@@ -167,19 +188,25 @@
 - 手册地址：https://www.babeljs.cn/
 - Babel 基本是否方法
 
-<img src="images/es6/babel 使用 1.png" alt="babel 使用 1" style="zoom:67%;" />
+<img src="images/es6/babel 使用 1.png" alt="babel 使用 1" style="zoom:50%;" />
+
+
 
 ### 案例一：员工列表
 
-<img src="images/es6/案例一（员工列表）.jpg" alt="案例一（员工列表）" style="zoom:67%;" />
+<img src="images/es6/案例一（员工列表）.jpg" alt="案例一（员工列表）" style="zoom:50%;" />
 
  [员工列表](案例\案例1（员工列表）\index.html) 
 
+
+
 ### 案例二：百度音乐全选
 
-![案例二（百度音乐榜单）](images/es6/案例二（百度音乐榜单）.jpg)
+<img src="images/es6/案例二（百度音乐榜单）.jpg" alt="案例二（百度音乐榜单）" style="zoom: 67%;" />
 
  [百度音乐榜单](案例\案例2（百度音乐榜单）\index.html) 
+
+
 
 ## 2、面向对象
 
@@ -246,7 +273,7 @@ let tab2 = Tab();
 
 ##构造函数原型
 
-<img src="images/面向对象/prototypeimg.png" alt="prototypeimg" style="zoom: 25%;" />
+<img src="images/面向对象/prototypeimg.png" alt="prototypeimg" style="zoom: 33%;" />
 
 ### new 运算符
 
@@ -331,12 +358,16 @@ console.log(tab1.name) // 张三
 tab1.psFor();
 ```
 
+
+
 ### prototype原型
 
 - 通过new实例化出来的对象其属性和行为来自两个部分，一部分来自构造函数，另一部分来自原型。
 - 当声明一个函数的时候，同时也申明了一个原型 。
 - 原型本身是一个对象。
 - 对象属性方法查找规则；
+
+
 
 ### 面向对象编程
 
@@ -346,11 +377,15 @@ tab1.psFor();
 
 三、面相对象特性： 抽象、 继承、封装、多态
 
+
+
 ### 对象和类
 
 ​	一、对象：具体的某个事物；(如：小明、叮当猫)
 
 ​	二、类：一类事物的抽象；(如：人类、猫类)
+
+
 
 ### 构造函数继承
 
@@ -390,8 +425,6 @@ console.log(newPerson.className);
 
 
 
-
-
 ### 原型链
 
 原型链是指对象在访问属性或方法时的查找方式。
@@ -400,7 +433,7 @@ console.log(newPerson.className);
 
 2.原型链最顶层为 Object 构造函数的 prototype 原型对象，给 Object.prototype 添加属性或方法可以被除  null 和 undefined 之外的所有数据类型对象使用。
 
-<img src="images/面向对象/原型链.png" alt="原型链" style="zoom:33%;" />
+<img src="images/面向对象/原型链.png" alt="原型链" style="zoom: 25%;" />
 
 
 
@@ -413,8 +446,22 @@ console.log(newPerson.className);
 
 - JOSN序列化的不足
 
-  ```
-  如果拷贝对象包含函数，或者undefined等值，此方法就会出现问题
+  ```js
+  //如果拷贝对象包含函数，或者undefined等值，此方法就会出现问题
+  let obj = {
+      name: "张三",
+      age: 20,
+      arr: [1, 2, 3],
+      obj3: {},
+      test: undefined,
+      fn: function () {
+          console.log("fn...");
+      },
+      test2: null,
+  };
+  let obj2 = JSON.parse(JSON.stringify(obj));
+  console.log(obj); // {name: "张三", age: 20, arr: Array(3),fn: ƒ (), obj3: {}, test: undefined,test2:null}
+  console.log(obj2); // {name: "张三", age: 20, arr: Array(3), obj3: {}, test2: null}
   ```
 
 - 浅拷贝和深拷贝
@@ -442,6 +489,25 @@ console.log(newPerson.className);
 
 - 深拷贝继承
 
+  ```js
+  function Dad() {
+      this.name = "张三";
+  }
+  Dad.prototype.hobby = function () {
+      console.log("喜欢篮球");
+  };
+  function Son() {
+      Dad.call(this);
+  }
+  Son.prototype = deepCopy(Dad.prototype);
+  Son.prototype.constructor = Son;
+  
+  let newSon = new Son();
+  newSon.hobby(); // 喜欢篮球
+  ```
+
+  
+
 - 组合继承
 
   ```js
@@ -464,9 +530,155 @@ console.log(newPerson.className);
   ```
 
 
+
+### ES6中的类
+
+- 类的写法
+
+```js
+class Person{
+  	height="178cm";
+    constructor(name,age){
+        //属性
+        this.name = name;
+        this.age = age;
+    }
+    //方法
+    getName(){
+        console.log("姓名是:"+this.name);
+    }
+}
+let student = new Person("张三",20);
+student.getName(); 
+```
+
+- 静态方法和属性:实例不会继承的属性和方法
+
+  ```js
+  class Person{
+      //静态方法
+      static hobby(){
+          console.log("喜欢篮球");
+      }
+  }
+  //静态属性
+  Person.height = "178cm";
+  //通过类来调用
+  Person.hobby();
+  console.log(Person.height);
+  ```
+
+  
+
+- 类的继承:extends
+
+  ```js
+  class Dad{
+      name = "张三";
+      age = 40;
+      constructor(height){
+          this.height = height;
+      }
+      hobby(){
+          console.log("喜欢篮球");
+      }
+      setStyle(){
+          console.log("父类逻辑");
+      }
+  }
+  class Son extends Dad{
+      constructor(height){
+          //表示父类的构造函数
+          super(height);
+      }
+      setStyle(){
+          super.setStyle();
+          console.log("子类逻辑");
+      }
+  }
+  let son1 = new Son("178cm");
+  son1.setStyle(); // 父类逻辑 子类逻辑
+  console.log(son1.height); // 178cm
+  ```
+
+  
+
+### 包装对象
+
+- 除过null,undefined，基本类型都有自己对应的包装对象：String Number Boolean 	
+
+- 包装对象把所有的属性和方法给了基本类型，然后包装对象消失
+
+  ```js
+  // let str = new String("a b c");
+  // console.log(str); // String {"a b c"}
+  // let arr = str.split(" ");
+  // console.log(arr); //  ["a", "b", "c"]
+  
+  let str = "a b c";
+  function mysplit(str, method, arg) {
+      let temp = new String(str);
+      return temp[method](arg);
+      //销毁包装对象；
+  }
+  let arr = mysplit(str, "split", " ");
+  console.log(arr); //  ["a", "b", "c"]
+  ```
+
+  
+
+### 常用方法
+
+- hasOwnProperty()：看是不是对象自身底下的属性
+
+- contructor查看对象的构造函数 可以用来做判断
+
+- instanceof:对象与构造函数是否在原型链上有关系
+
+- toString()判断类型；  转换字符串  进制转换
+
+  ```js
+  function Person() {
+      this.name = "张三";
+  }
+  
+  // constructor
+  // Person.prototype.constructor;
+  let zhangsan = new Person();
+  console.log(zhangsan.constructor === Person); // true
+  let arr = [1, 2, 3];
+  console.log(arr.constructor === Array); // true
+  
+  // // instanceof
+  let arr = [];
+  console.log(arr instanceof Array); // true
+  console.log(arr instanceof Object); // true
+  
+  // typeof
+  let arr = [];
+  let obj = {};
+  console.log(typeof arr); // object
+  console.log(typeof obj); // object
+  
+  // toString
+  let res = Object.prototype.toString.call(arr);
+  let res2 = Object.prototype.toString.call(obj);
+  console.log(res); // [object Array]
+  console.log(res2); // [object Object]
+  console.log(res === "[object Array]"); // true
+  ```
+
+  
+
 ### 案例一：多个选项卡
 
-![案例一（多个选项卡）](images/面向对象/案例一（多个选项卡）.jpg)
+<img src="images/面向对象/案例一（多个选项卡）.jpg" alt="案例一（多个选项卡）" style="zoom: 80%;" />
 
- [多个选项卡](案例\案例2（多个选项卡）\1-多个选项卡改造构造 函数.html) 
+ [多个选项卡](案例\案例3（多个选项卡）\1-多个选项卡改造构造 函数.html) 
+
+### 案例二：拖拽限定范围
+
+<img src="images/面向对象/案例二（拖拽限定范围）.png" alt="案例二（拖拽限定范围）" style="zoom:33%;" />
+
+ [拖拽限定范围](案例\案例4 （拖拽限定范围）\1、拖拽限定范围继承扩展深拷贝.html) 
 
