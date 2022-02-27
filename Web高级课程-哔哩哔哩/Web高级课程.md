@@ -1,4 +1,7 @@
+
+
 [TOC]
+
 ## 1、ECMAScript 6基础
 
 **ECMAScript 6 简介**
@@ -668,7 +671,333 @@ student.getName();
   console.log(res === "[object Array]"); // true
   ```
 
+
+### 自定义组件弹框
+
+- **组件是什么？**
+
+  ​	 组件 ：数据和方法的简单封装；
+
+  **弹窗功能**
+
+  - 属性：宽、高、标题、内容；
+
+  - 方法：打开 、关闭、渲染、拖拽
+
+  - 配置
+
+    ```js
+    {
+    	width: "30%",
+    	height: "250px",
+    	title: "测试标题",
+    	content: "测试内容",
+    	dragable: true, //是否可拖拽
+    	maskable: true, //是否有遮罩
+    	isCancel:false //是否有取消
+    }
+    ```
+
+
+  **合并配置**
+
+  - 解构赋值添加默认参数
+  - 通过Object.assagin来合并
+
+  ###渲染视图
+
+  - 创建dom解构；es6表达式做判断；
+  - 初始化
+  - 打开方法
+  - 关闭方法
+  - 拖拽方法
+
+  **事件委托**
+
+  - 节点不存在绑定事件，委托给父级添加事件
+
+  ```js
+  this.dailogHtml.onclick = e => {
+      //console.log(e.target.className);
+      switch (e.target.className) {
+          case 'k-close':
+              this.close();
+              // this.opts.cancel();
+              // this.trigger("cancel");
+              this.dispatchEvent(cancel);
+              break;
+          case 'k-cancel':
+              this.close();
+              // this.opts.cancel();
+              // this.trigger("cancel");
+              this.dispatchEvent(cancel);
+              break;
+          case 'k-primary':
+              this.close();
+              // this.opts.success();
+              // this.trigger("success");
+              this.confim();
+              break;
+      }
+  }
+  ```
+
+  **自定义事件**
+
+  - 自定义事件绑定addEvent
+  - 自定义事件触发trigger
+
+  ```js
+  function fn1() {
+      console.log("很多逻辑a");
+  }
+  function fn2() {
+      console.log("很多逻辑b");
+  }
+  // fn1();
+  // fn2();
+  // document.querySelector(".btn").addEventListener("click", fn1);
+  // document.querySelector(".btn").addEventListener("click", fn2);
   
+  // let handle = {
+  //     // "myevent1"
+  //     // "myevent2":[fn1,fn2,fn3....],
+  //     // "myevent3":[fn1,fn2,fn3....],
+  // };
+  
+  class MyEvent {
+      constructor() {
+          this.handle = {};
+      }
+      addEvent(eventName, fn) {
+          if (typeof this.handle[eventName] === "undefined") {
+              this.handle[eventName] = [];
+          }
+          this.handle[eventName].push(fn);
+      }
+      trigger(eventName) {
+          if (!(eventName in this.handle)) {
+              return;
+          }
+          this.handle[eventName].forEach((v) => {
+              v();
+          });
+      }
+      removeEvent(eventName, fn) {
+          if (!(eventName in this.handle)) {
+              return;
+          }
+          for (let i = 0; i < this.handle[eventName].length; i++) {
+              if (this.handle[eventName][i] === fn) {
+                  this.handle[eventName].splice(i, 1);
+                  break;
+              }
+          }
+      }
+  }
+  let newEvent = new MyEvent();
+  newEvent.addEvent("myEvent", fn1);
+  newEvent.addEvent("myEvent", fn2);
+  // newEvent.removeEvent("myEvent", fn2);
+  newEvent.trigger("myEvent"); // 很多逻辑a 很多逻辑b
+  ```
+
+  **继承扩展功能**
+
+  - 遮罩层、取消按钮、
+  - 重写和功能相关的方法；
+
+### 面向对象应用之实现jQ库核心功能
+
+（1）定义函数返还JQ对象 
+
+（2）ready方法和原生节点处理
+
+（3）选择器封装 
+
+（4）封装JQ的eq方法
+
+ （5）封装JQ的click方法 
+
+（6）jQ中的链式操作
+
+```js
+$("div").eq(0).click(function(){
+    console.log(1111);
+})
+let res = $("div").eq(0).end();
+
+$(".box1").on("mouseover   mousedown  ",function(){
+    console.log("333");
+})
+```
+
+（7）封装JQ的css方法 
+
+```js
+let res = $("div").css("background");
+console.log(res)
+
+$("div").css("width",200);
+$.cssNumber['wh'] = true;
+
+$("div").css("opacity",0.5);
+$("div").css({"width":"200px","height":"200px"});
+```
+
+（8）cssHooks扩展功能
+
+```js
+$.cssHooks['wh'] = {
+    get(ele){
+        console.log(ele);
+        return ele.offsetWidth + " " + ele.offsetHeight;
+    },
+    set(ele,value){
+        ele.style.width = value;
+        ele.style.height = value;
+    }
+}
+let res = $("div").css("wh");
+console.log(res); // 100 100
+
+$("div").css("wh","200px");
+```
+
+js代码：
+
+```js
+class Jq {
+    constructor(arg, root) {
+        if (typeof root === 'undefined') {
+            this['prevObject'] = [document];
+        } else {
+            this['prevObject'] = root;
+        }
+        if (typeof arg === "function") {
+            //dom结构加载完毕执行代码
+            this.ready(arg);
+        } else if (typeof arg === "string") {
+            // .box1
+            let ele = document.querySelectorAll(arg);
+            this.addELement(ele);
+        } else {
+            //传入js原生节点；
+            if (typeof arg.length === 'undefined') {
+                // 一个对象节点；
+                this[0] = arg;
+                this.length = 1;
+            } else {
+                // 多个对象节点
+                this.addELement(arg);
+            }
+        }
+    }
+    eq(index) {
+        return new Jq(this[index], this);
+    }
+    get(index) {
+        return this[index];
+    }
+    end() {
+        return this['prevObject'];
+    }
+    addELement(ele) {
+        // ["张三" , "李四" ,"王五" ]  0,1,2
+        ele.forEach((el, index) => {
+            this[index] = el;
+        })
+        this.length = ele.length;
+    }
+    ready(arg) {
+        window.addEventListener("DOMContentLoaded", arg, false);
+    }
+
+    click(fn) {
+        // fn();
+        for (let i = 0; i < this.length; i++) {
+            this[i].addEventListener("click", fn, false);
+        }
+    }
+    on(eventName, fn) {
+        let reg = /\s+/g;
+        eventName = eventName.replace(reg, " ");
+        let arr = eventName.split(" ");
+        for (let i = 0; i < this.length; i++) {
+            for (let j = 0; j < arr.length; j++) {
+                this[i].addEventListener(arr[j], fn, false);
+            }
+        }
+    }
+    css(...arg){
+        if(arg.length===1){
+            if(typeof arg[0] === 'string'){
+                if(arg[0] in $.cssHooks){
+                     return  $.cssHooks[arg[0]].get(this[0]);
+                }
+                //字符串；获取样式
+              return this.getStyle(this[0],arg[0]);
+            }else{
+                //传入的是对象；
+                for(let i=0;i<this.length;i++){
+                    for(let j in arg[0]){
+                        this.setStyle(this[i],j,arg[0][j]);
+                    }
+                }
+            }
+        }else{
+            //多个参数
+            for(let i=0;i<this.length;i++){
+                this.setStyle(this[i],arg[0],arg[1]);
+            }
+        }
+        return this;
+    }
+    setStyle(ele,styleName,styleValue){
+        if(typeof styleValue === 'number' && !(styleName in $.cssNumber)){
+            styleValue = styleValue + "px";
+        }
+        if(styleName in $.cssHooks){
+            $.cssHooks[styleName].set(ele,styleValue);
+        }else{
+            ele.style[styleName] = styleValue;
+        }
+    }
+    getStyle(ele,styleName){
+      return  window.getComputedStyle(ele,null)[styleName];
+    }
+}
+
+function $(arg) {
+    return new Jq(arg);
+}
+
+$.cssNumber = {
+    animationIterationCount: true,
+    columnCount: true,
+    fillOpacity: true,
+    flexGrow: true,
+    flexShrink: true,
+    fontWeight: true,
+    gridArea: true,
+    gridColumn: true,
+    gridColumnEnd: true,
+    gridColumnStart: true,
+    gridRow: true,
+    gridRowEnd: true,
+    gridRowStart: true,
+    lineHeight: true,
+    opacity: true,
+    order: true,
+    orphans: true,
+    widows: true,
+    zIndex: true,
+    zoom: true
+}
+$.cssHooks = {};
+```
+
+
 
 ### 案例一：多个选项卡
 
@@ -681,4 +1010,10 @@ student.getName();
 <img src="images/面向对象/案例二（拖拽限定范围）.png" alt="案例二（拖拽限定范围）" style="zoom:33%;" />
 
  [拖拽限定范围](案例\案例4 （拖拽限定范围）\1、拖拽限定范围继承扩展深拷贝.html) 
+
+### 案例三：自定义组件弹框
+
+![案例三（自定义组件弹框）](images/面向对象/案例三（自定义组件弹框）.jpg)
+
+ [自定义组件弹框](案例\案例5 （自定义组件弹框）\1-组件样式模板.html) 
 
