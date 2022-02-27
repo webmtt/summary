@@ -1,6 +1,6 @@
-
-
 [TOC]
+
+
 
 ## 1、ECMAScript 6基础
 
